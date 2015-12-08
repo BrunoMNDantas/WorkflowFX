@@ -1,4 +1,5 @@
-/bin/
+WorkflowFX/bin/
+WorkflowFXTests/bin/
 .settings/
 *.classpath
 *.class
