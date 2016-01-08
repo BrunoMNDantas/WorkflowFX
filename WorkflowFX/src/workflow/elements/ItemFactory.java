@@ -89,6 +89,7 @@ public class ItemFactory {
 		
 		Keys keys = new Keys();
 		keys.add(KeyCode.DELETE, ()->elements.removeItem(item));
+		keys.add(KeyCode.BACK_SPACE, ()->elements.removeItem(item));
 		new Shortcut<Node>(item.getRoot(), keys).mount();
 	}
 	
