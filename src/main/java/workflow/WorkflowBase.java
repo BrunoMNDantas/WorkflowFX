@@ -21,9 +21,9 @@ package workflow;
 
 import javafx.scene.Node;
 import javafx.scene.input.MouseEvent;
-import utils.Event;
-import utils.Historic;
-import utils.Historic.Operation;
+import jfxwfutils.Event;
+import jfxwfutils.Historic;
+import jfxwfutils.Historic.Operation;
 
 import components.DoubleClickable;
 import components.multiOption.Menu;

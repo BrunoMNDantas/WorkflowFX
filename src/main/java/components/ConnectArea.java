@@ -30,7 +30,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
-import utils.Utils;
+import jfxutils.Utils;
 
 
 

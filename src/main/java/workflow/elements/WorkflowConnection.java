@@ -20,7 +20,7 @@
 package workflow.elements;
 
 import javafx.scene.shape.Line;
-import utils.Historic;
+import jfxwfutils.Historic;
 import workflow.WorkflowBase;
 import workflow.WorkflowConfigurator;
 

@@ -25,8 +25,8 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
-import utils.Historic;
-import utils.Historic.Operation;
+import jfxwfutils.Historic;
+import jfxwfutils.Historic.Operation;
 import workflow.elements.WorkflowConnection;
 import workflow.elements.WorkflowItem;
 

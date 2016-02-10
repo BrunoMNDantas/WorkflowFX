@@ -24,8 +24,8 @@ import java.util.function.Function;
 import javafx.event.EventHandler;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.MouseEvent;
-import utils.Historic;
-import utils.Utils;
+import jfxwfutils.Historic;
+import jfxutils.Utils;
 import workflow.Elements;
 import workflow.WorkflowConfigurator;
 

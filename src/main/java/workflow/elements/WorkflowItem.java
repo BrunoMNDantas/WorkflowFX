@@ -24,9 +24,9 @@ import java.util.function.Consumer;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.Labeled;
-import utils.Event;
-import utils.Historic;
-import utils.Historic.Operation;
+import jfxwfutils.Event;
+import jfxwfutils.Historic;
+import jfxwfutils.Historic.Operation;
 import workflow.WorkflowBase;
 import workflow.WorkflowConfigurator;
 

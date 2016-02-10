@@ -23,7 +23,7 @@ import java.util.function.Function;
 
 import javafx.scene.Node;
 import javafx.scene.input.KeyCode;
-import utils.Historic;
+import jfxwfutils.Historic;
 import workflow.Elements;
 import workflow.WorkflowConfigurator;
 

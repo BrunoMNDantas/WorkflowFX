@@ -19,7 +19,7 @@
  */
 package workflow;
 
-import utils.Event;
+import jfxwfutils.Event;
 import workflow.elements.WorkflowConnection;
 import workflow.elements.WorkflowItem;
 
