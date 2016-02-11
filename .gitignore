@@ -5,3 +5,4 @@ WorkflowFXTests/bin/
 *.class
 .idea/
 *.iml
+build/
