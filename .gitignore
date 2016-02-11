@@ -3,3 +3,5 @@ WorkflowFXTests/bin/
 .settings/
 *.classpath
 *.class
+.idea/
+*.iml
