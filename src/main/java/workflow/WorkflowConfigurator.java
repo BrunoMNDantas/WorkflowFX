@@ -132,7 +132,7 @@ public class WorkflowConfigurator {
 
 
 
-	private Image defaultConnectImage = new Image("resources/connect.png");
+	private Image defaultConnectImage = new Image("connect.png");
 
 	public WorkflowConfigurator setDefaultConnectImage(Image image){
 		this.defaultConnectImage = image;
