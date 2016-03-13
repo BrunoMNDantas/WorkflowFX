@@ -19,16 +19,12 @@
  */
 package workflow;
 
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Map;
-
 import jfxwfutils.Historic;
 import jfxwfutils.Historic.Operation;
 import workflow.elements.WorkflowConnection;
 import workflow.elements.WorkflowItem;
+
+import java.util.*;
 
 public class Elements {
 
@@ -187,11 +183,8 @@ public class Elements {
 	private boolean validateAddition(WorkflowItem item){
 		if(!config.getItemAdditionValidator().apply(item))
 			return false;
-		
-		if(items.contains(item) || !config.getPermitItemAdition())
-			return false;
 
-		return true;
+		return items.contains(item) && config.getPermitItemAdition();
 	}
 
 	private void addItemDepedencies(WorkflowItem item){
@@ -247,11 +240,8 @@ public class Elements {
 	private boolean validateRemotion(WorkflowItem item){
 		if(!config.getItemRemotionValidator().apply(item))
 			return false;
-		
-		if(!items.contains(item) || !config.getPermitItemRemotion())
-			return false;
 
-		return true;
+		return items.contains(item) && config.getPermitItemRemotion();
 	}
 
 	private void removeItemDepedencies(WorkflowItem item){
@@ -320,11 +310,11 @@ public class Elements {
 		
 		if(init==end)
 			return this.config.getPermitItemSelfConnection();
-		
+
 		if(!config.getPermitCircularConnection() && canReach(init, end))
 			return false;
-		
-		return true;		
+
+		return true;
 	}
 	
 	private boolean canReach(WorkflowItem item, WorkflowItem from){
@@ -344,9 +334,10 @@ public class Elements {
 			return false;
 		
 		Collection<WorkflowConnection> connectionsToEnd = connectionsTo.get(connection.getEndItem());
+
 		if(!connectionsToEnd.isEmpty() && !config.getPermitMultipleConnectionsToItem())
 			return false;
-		
+
 		return true;
 	}
 
@@ -390,7 +381,7 @@ public class Elements {
 		if(!internalDisconnect(connection))
 			return false;
 
-		Operation operation = new Operation(()->internalConnect(connection), ()->internalDisconnect(connection));;
+		Operation operation = new Operation(()->internalConnect(connection), ()->internalDisconnect(connection));
 		addToHistoric(operation);
 
 		return true;
@@ -406,11 +397,8 @@ public class Elements {
 	private boolean validateDisconnection(WorkflowConnection connection){
 		if(!config.getConnectionRemotionValidator().apply(connection))
 			return false;
-			
-		if(!connections.contains(connection) || !config.getPermitConnectionRemotion())
-			return false;
 
-		return true;
+		return connections.contains(connection) && config.getPermitConnectionRemotion();
 	}
 
 	private void removeConnectionDepedencies(WorkflowConnection connection){
