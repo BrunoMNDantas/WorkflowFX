@@ -184,7 +184,7 @@ public class Elements {
 		if(!config.getItemAdditionValidator().apply(item))
 			return false;
 
-		return items.contains(item) && config.getPermitItemAdition();
+		return !items.contains(item) && config.getPermitItemAdition();
 	}
 
 	private void addItemDepedencies(WorkflowItem item){
