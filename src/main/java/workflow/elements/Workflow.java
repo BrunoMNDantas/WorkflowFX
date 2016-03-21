@@ -102,10 +102,10 @@ public class Workflow extends WorkflowBase<Pane>{
 	}
 	
 	private void setEventListeners(){
-		events.addItem.addListner(this::onAddItem);
-		events.removeItem.addListner(this::onRemoveItem);
-		events.connect.addListner(this::onAddConnection);
-		events.disconnect.addListner(this::onRemoveConnection);
+		events.addItem.addListener(this::onAddItem);
+		events.removeItem.addListener(this::onRemoveItem);
+		events.connect.addListener(this::onAddConnection);
+		events.disconnect.addListener(this::onRemoveConnection);
 	}
 
 	private void setOnMouseClicked(){

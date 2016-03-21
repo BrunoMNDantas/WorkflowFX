@@ -19,9 +19,6 @@
  */
 package components;
 
-import java.util.function.Consumer;
-import java.util.function.Function;
-
 import javafx.application.Platform;
 import javafx.event.EventHandler;
 import javafx.scene.Node;
@@ -31,6 +28,9 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import jfxutils.Utils;
+
+import java.util.function.Consumer;
+import java.util.function.Function;
 
 
 
@@ -81,7 +81,7 @@ public class ConnectArea<T extends Node, I/*Info*/> extends Component<T>{
 		
 		setOnFocused();
 		setOnMove();
-		setParentListner();
+		setParentListener();
 		setParent();
 		setOnMouseReleased();
 	}
@@ -105,7 +105,7 @@ public class ConnectArea<T extends Node, I/*Info*/> extends Component<T>{
 		this.node.layoutYProperty().addListener((a)->hide());
 	}
 		
-	private void setParentListner(){
+	private void setParentListener(){
 		this.node.parentProperty().addListener((obs, oldParent, newParent)->{
 			// INCONSISTENT STATE
 			if(newParent==null && ((Pane)oldParent).getChildren().contains(this.node))
