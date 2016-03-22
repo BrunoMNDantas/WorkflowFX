@@ -205,7 +205,7 @@ public class Elements {
 		if(!validateRemoval(item))
 			return false;
 
-		removeItemDependencies(item);
+		removeItemDepedencies(item);
 		events.removeItem.trigger(item);
 
 		return true;	
@@ -241,7 +241,7 @@ public class Elements {
 		return items.contains(item) && config.getPermitItemRemoval();
 	}
 
-	private void removeItemDependencies(WorkflowItem item){
+	private void removeItemDepedencies(WorkflowItem item){
 		List<WorkflowConnection> connections =  new LinkedList<>();
 		connections.addAll(connectionsFrom.get(item));
 		connections.addAll(connectionsTo.get(item));
@@ -264,7 +264,7 @@ public class Elements {
 		if(!validateConnection(connection))
 			return false;
 
-		addConnectionDependencies(connection);
+		addConnectionDepedencies(connection);
 		events.connect.trigger(connection);
 
 		return true;
@@ -349,7 +349,7 @@ public class Elements {
 		return true;
 	}
 	
-	private void addConnectionDependencies(WorkflowConnection connection){
+	private void addConnectionDepedencies(WorkflowConnection connection){
 		connections.add(connection);
 
 		Object key = this.config.getWorkflowConnectionKeyExtractor().apply(connection);
@@ -367,7 +367,7 @@ public class Elements {
 		if(!validateDisconnection(connection))
 			return false;
 
-		removeConnectionDependencies(connection);
+		removeConnectionDepedencies(connection);
 		events.disconnect.trigger(connection);
 
 		return true;
@@ -397,7 +397,7 @@ public class Elements {
 		return connections.contains(connection) && config.getPermitConnectionRemoval();
 	}
 
-	private void removeConnectionDependencies(WorkflowConnection connection){
+	private void removeConnectionDepedencies(WorkflowConnection connection){
 		connections.remove(connection);
 
 		Object key = this.config.getWorkflowConnectionKeyExtractor().apply(connection);

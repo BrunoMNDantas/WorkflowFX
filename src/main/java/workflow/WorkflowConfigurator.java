@@ -36,7 +36,7 @@ public class WorkflowConfigurator {
 
 
 
-	private Function<WorkflowItem, Object> workflowItemKeyExtractor = (wfi)->wfi.hashCode();
+	private Function<WorkflowItem, Object> workflowItemKeyExtractor = Object::hashCode;
 
 	public WorkflowConfigurator setWorkflowItemKeyExtractor(Function<WorkflowItem, Object> extractor){
 		this.workflowItemKeyExtractor = extractor;
@@ -49,7 +49,7 @@ public class WorkflowConfigurator {
 
 
 
-	private Function<WorkflowConnection, Object> workflowConnectionKeyExtractor = (wfc)->wfc.hashCode();
+	private Function<WorkflowConnection, Object> workflowConnectionKeyExtractor = Object::hashCode;
 
 	public WorkflowConfigurator setWorkflowConnectionKeyExtractor(Function<WorkflowConnection, Object> extractor){
 		this.workflowConnectionKeyExtractor = extractor;

@@ -19,18 +19,17 @@
  */
 package workflow.elements;
 
-import java.util.function.Function;
-
+import components.ConnectArea;
+import components.connect.Coordinates;
+import components.shortcut.Keys;
+import components.shortcut.Shortcut;
 import javafx.scene.Node;
 import javafx.scene.input.KeyCode;
 import jfxwfutils.Historic;
 import workflow.Elements;
 import workflow.WorkflowConfigurator;
 
-import components.ConnectArea;
-import components.connect.Coordinates;
-import components.shortcut.Keys;
-import components.shortcut.Shortcut;
+import java.util.function.Function;
 
 public class ItemFactory {
 
@@ -116,9 +115,8 @@ public class ItemFactory {
 		if(!config.getPermitConnectibleItems())
 			return;
 		
-		Function<WorkflowItem, Boolean> onConnectionReceived = (otherItem)->{
-			return elements.addConnection(config.getDefaultConnectionFactory().apply(otherItem, item));
-		}; 
+		Function<WorkflowItem, Boolean> onConnectionReceived = (otherItem)->
+			elements.addConnection(config.getDefaultConnectionFactory().apply(otherItem, item));
 		
 		new ConnectArea<>(item.getRoot(), config.getDefaultConnectImage(), onConnectionReceived, null, item).mount();
 	}
