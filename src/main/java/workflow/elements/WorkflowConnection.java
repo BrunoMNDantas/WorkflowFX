@@ -38,7 +38,7 @@ public class WorkflowConnection extends WorkflowBase<Line> {
 	public WorkflowItem getEndItem(){ return endItem; }
 	
 	
-	// COSTRUCTORS
+	// CONSTRUCTORS
 	
 	protected WorkflowConnection(WorkflowConfigurator config, Historic historic, Connector connector, Object state, WorkflowItem initItem, WorkflowItem endItem){
 		super(connector.getNode(), state, config, historic);

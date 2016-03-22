@@ -164,7 +164,7 @@ public class Elements {
 		if(!validateAddition(item))
 			return false;
 
-		addItemDepedencies(item);
+		addItemDependencies(item);
 		events.addItem.trigger(item);
 
 		return true;
@@ -184,10 +184,10 @@ public class Elements {
 		if(!config.getItemAdditionValidator().apply(item))
 			return false;
 
-		return !items.contains(item) && config.getPermitItemAdition();
+		return !items.contains(item) && config.getPermitItemAddition();
 	}
 
-	private void addItemDepedencies(WorkflowItem item){
+	private void addItemDependencies(WorkflowItem item){
 		items.add(item);
 
 		Object key = this.config.getWorkflowItemKeyExtractor().apply(item);
@@ -202,10 +202,10 @@ public class Elements {
 	// REMOVE
 
 	private boolean internalRemove(WorkflowItem item){
-		if(!validateRemotion(item))
+		if(!validateRemoval(item))
 			return false;
 
-		removeItemDepedencies(item);
+		removeItemDependencies(item);
 		events.removeItem.trigger(item);
 
 		return true;	
@@ -234,14 +234,14 @@ public class Elements {
 		return removeItem(workflowItems.get(key));
 	}
 
-	private boolean validateRemotion(WorkflowItem item){
-		if(!config.getItemRemotionValidator().apply(item))
+	private boolean validateRemoval(WorkflowItem item){
+		if(!config.getItemRemovalValidator().apply(item))
 			return false;
 
-		return items.contains(item) && config.getPermitItemRemotion();
+		return items.contains(item) && config.getPermitItemRemoval();
 	}
 
-	private void removeItemDepedencies(WorkflowItem item){
+	private void removeItemDependencies(WorkflowItem item){
 		List<WorkflowConnection> connections =  new LinkedList<>();
 		connections.addAll(connectionsFrom.get(item));
 		connections.addAll(connectionsTo.get(item));
@@ -264,7 +264,7 @@ public class Elements {
 		if(!validateConnection(connection))
 			return false;
 
-		addConnectionDepedencies(connection);
+		addConnectionDependencies(connection);
 		events.connect.trigger(connection);
 
 		return true;
@@ -349,7 +349,7 @@ public class Elements {
 		return true;
 	}
 	
-	private void addConnectionDepedencies(WorkflowConnection connection){
+	private void addConnectionDependencies(WorkflowConnection connection){
 		connections.add(connection);
 
 		Object key = this.config.getWorkflowConnectionKeyExtractor().apply(connection);
@@ -367,7 +367,7 @@ public class Elements {
 		if(!validateDisconnection(connection))
 			return false;
 
-		removeConnectionDepedencies(connection);
+		removeConnectionDependencies(connection);
 		events.disconnect.trigger(connection);
 
 		return true;
@@ -391,13 +391,13 @@ public class Elements {
 	}
 
 	private boolean validateDisconnection(WorkflowConnection connection){
-		if(!config.getConnectionRemotionValidator().apply(connection))
+		if(!config.getConnectionRemovalValidator().apply(connection))
 			return false;
 
-		return connections.contains(connection) && config.getPermitConnectionRemotion();
+		return connections.contains(connection) && config.getPermitConnectionRemoval();
 	}
 
-	private void removeConnectionDepedencies(WorkflowConnection connection){
+	private void removeConnectionDependencies(WorkflowConnection connection){
 		connections.remove(connection);
 
 		Object key = this.config.getWorkflowConnectionKeyExtractor().apply(connection);

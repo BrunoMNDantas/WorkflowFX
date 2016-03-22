@@ -19,21 +19,20 @@
  */
 package workflow.elements;
 
-import java.util.function.Function;
-
-import javafx.event.EventHandler;
-import javafx.scene.input.KeyCode;
-import javafx.scene.input.MouseEvent;
-import jfxwfutils.Historic;
-import jfxutils.Utils;
-import workflow.Elements;
-import workflow.WorkflowConfigurator;
-
-import components.connect.Connectable;
+import components.connect.Connectible;
 import components.connect.connection.IConnection;
 import components.connect.connector.Connector;
 import components.shortcut.Keys;
 import components.shortcut.Shortcut;
+import javafx.event.EventHandler;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.MouseEvent;
+import jfxutils.Utils;
+import jfxwfutils.Historic;
+import workflow.Elements;
+import workflow.WorkflowConfigurator;
+
+import java.util.function.Function;
 
 public class ConnectionFactory {
 	
@@ -76,14 +75,14 @@ public class ConnectionFactory {
 	
 	
 	private void mount(WorkflowConnection connection){
-		mountConnectable(connection);
+		mountConnectible(connection);
 		mountShortcuts(connection);
 	}
 	
-	private void mountConnectable(WorkflowConnection connection){
+	private void mountConnectible(WorkflowConnection connection){
 		Function<WorkflowItem, IConnection<?>> factory = this.config.getConnectionFactory();
 		
-		new Connectable(connection.getConnector(), factory.apply(connection.getInitItem()), factory.apply(connection.getEndItem())).connect();
+		new Connectible(connection.getConnector(), factory.apply(connection.getInitItem()), factory.apply(connection.getEndItem())).connect();
 	}
 	
 	private void mountShortcuts(WorkflowConnection connection){
@@ -93,10 +92,10 @@ public class ConnectionFactory {
 		Keys keys = new Keys();
 		keys.add(KeyCode.DELETE, ()->elements.removeConnection(connection));
 		new Shortcut<>(connection.getRoot(), keys).mount();
-		setFoucusListener(connection.getConnector());
+		setFocusListener(connection.getConnector());
 	}
 
-	private void setFoucusListener(Connector connector) {
+	private void setFocusListener(Connector connector) {
 		EventHandler<? super MouseEvent> oldHandler = connector.getNode().getOnMouseClicked();
 		EventHandler<? super MouseEvent> newHandler = (event)->{
 			connector.getNode().requestFocus();

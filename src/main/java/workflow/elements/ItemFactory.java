@@ -113,7 +113,7 @@ public class ItemFactory {
 	}
 	
 	private void mountConnectArea(WorkflowItem item) {
-		if(!config.getPermitConnectableItems())
+		if(!config.getPermitConnectibleItems())
 			return;
 		
 		Function<WorkflowItem, Boolean> onConnectionReceived = (otherItem)->{

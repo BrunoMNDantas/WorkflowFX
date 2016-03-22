@@ -19,19 +19,18 @@
  */
 package workflow;
 
-import java.util.function.BiFunction;
-import java.util.function.Function;
-import java.util.function.Supplier;
-
+import components.connect.connection.FourSideConnection;
+import components.connect.connection.IConnection;
+import components.connect.connector.Connector;
+import components.connect.connector.ConnectorPointer;
 import javafx.scene.Node;
 import javafx.scene.image.Image;
 import workflow.elements.WorkflowConnection;
 import workflow.elements.WorkflowItem;
 
-import components.connect.connection.FourSideConnection;
-import components.connect.connection.IConnection;
-import components.connect.connector.Connector;
-import components.connect.connector.ConnectorPointer;
+import java.util.function.BiFunction;
+import java.util.function.Function;
+import java.util.function.Supplier;
 
 public class WorkflowConfigurator {
 
@@ -171,14 +170,14 @@ public class WorkflowConfigurator {
 
 
 
-	public Function<WorkflowItem, Boolean> itemRemotionValidator = (item)->true;
+	public Function<WorkflowItem, Boolean> itemRemovalValidator = (item)->true;
 	
-	public Function<WorkflowItem, Boolean> getItemRemotionValidator() {
-		return itemRemotionValidator;
+	public Function<WorkflowItem, Boolean> getItemRemovalValidator() {
+		return itemRemovalValidator;
 	}
 
-	public WorkflowConfigurator setItemRemotionValidator(Function<WorkflowItem, Boolean> itemRemotionValidator) {
-		this.itemRemotionValidator = itemRemotionValidator;
+	public WorkflowConfigurator setItemRemovalValidator(Function<WorkflowItem, Boolean> itemRemovalValidator) {
+		this.itemRemovalValidator = itemRemovalValidator;
 		return this;
 	}
 
@@ -197,14 +196,14 @@ public class WorkflowConfigurator {
 
 
 
-	public Function<WorkflowConnection, Boolean> connectionRemotionValidator = (connection)->true;
+	public Function<WorkflowConnection, Boolean> connectionRemovalValidator = (connection)->true;
 	
-	public Function<WorkflowConnection, Boolean> getConnectionRemotionValidator() {
-		return connectionRemotionValidator;
+	public Function<WorkflowConnection, Boolean> getConnectionRemovalValidator() {
+		return connectionRemovalValidator;
 	}
 
-	public WorkflowConfigurator setConnectionRemotionValidator(Function<WorkflowConnection, Boolean> connectionRemotionValidator) {
-		this.connectionRemotionValidator = connectionRemotionValidator;
+	public WorkflowConfigurator setConnectionRemovalValidator(Function<WorkflowConnection, Boolean> connectionRemovalValidator) {
+		this.connectionRemovalValidator = connectionRemovalValidator;
 		return this;
 	}
 	
@@ -222,42 +221,42 @@ public class WorkflowConfigurator {
 	}	
 	
 	
-	// PERMITIONS
+	// PERMISSIONS
 
-	private boolean permitItemAdition = true;
+	private boolean permitItemAddition = true;
 	
-	public boolean getPermitItemAdition() {
-		return permitItemAdition;
+	public boolean getPermitItemAddition() {
+		return permitItemAddition;
 	}
 
-	public WorkflowConfigurator setPermitItemAdition(boolean permitItemAdition) {
-		this.permitItemAdition = permitItemAdition;
+	public WorkflowConfigurator setPermitItemAddition(boolean permitItemAddition) {
+		this.permitItemAddition = permitItemAddition;
 		return this;
 	}
 	
 	
 
-	private boolean permitItemRemotion = true;
+	private boolean permitItemRemoval = true;
 
-	public boolean getPermitItemRemotion() {
-		return permitItemRemotion;
+	public boolean getPermitItemRemoval() {
+		return permitItemRemoval;
 	}
 
-	public WorkflowConfigurator setPermitItemRemotion(boolean permitItemRemotion) {
-		this.permitItemRemotion = permitItemRemotion;
+	public WorkflowConfigurator setPermitItemRemoval(boolean permitItemRemoval) {
+		this.permitItemRemoval = permitItemRemoval;
 		return this;
 	}
 
 	
 
-	private boolean permitConnectionRemotion = true;
+	private boolean permitConnectionRemoval = true;
 
-	public boolean getPermitConnectionRemotion() {
-		return permitConnectionRemotion;
+	public boolean getPermitConnectionRemoval() {
+		return permitConnectionRemoval;
 	}
 
-	public WorkflowConfigurator setPermitConnectionRemotion(boolean permitConnectionRemotion) {
-		this.permitConnectionRemotion = permitConnectionRemotion;
+	public WorkflowConfigurator setPermitConnectionRemoval(boolean permitConnectionRemoval) {
+		this.permitConnectionRemoval = permitConnectionRemoval;
 		return this;
 	}
 
@@ -315,15 +314,15 @@ public class WorkflowConfigurator {
 
 
 
-	private boolean permitConnectableItems = true;
+	private boolean permitConnectibleItems = true;
 
-	public WorkflowConfigurator setPermitConnectableItems(boolean permit){
-		this.permitConnectableItems = permit;
+	public WorkflowConfigurator setPermitConnectibleItems(boolean permit){
+		this.permitConnectibleItems = permit;
 		return this;
 	}
 
-	public boolean getPermitConnectableItems(){
-		return permitConnectableItems;
+	public boolean getPermitConnectibleItems(){
+		return permitConnectibleItems;
 	}
 
 
