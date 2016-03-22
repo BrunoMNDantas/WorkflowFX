@@ -219,11 +219,8 @@ public class Elements {
 		
 		Operation operation = new Operation(()->{
 			internalAdd(item);
-			for(WorkflowConnection connection : connectionOfItem)
-				internalConnect(connection);
-		}, ()->{
-			internalRemove(item);
-		});
+			connectionOfItem.forEach(this::internalConnect);
+		}, ()-> internalRemove(item));
 		
 		addToHistoric(operation);
 
@@ -248,8 +245,7 @@ public class Elements {
 		List<WorkflowConnection> connections =  new LinkedList<>();
 		connections.addAll(connectionsFrom.get(item));
 		connections.addAll(connectionsTo.get(item));
-		for(WorkflowConnection connection : connections)
-			internalDisconnect(connection);
+		connections.forEach(this::internalDisconnect);
 
 		items.remove(item);
 
